@@ -11,9 +11,16 @@ public class Rocket {
     //Двигатель третьей стадии
     private Engine thirdStage;
 
-    public Rocket(double fuelStageOne, double fuelStageTwo, double fuelStageThree) {
+//    public Rocket(Engine firstStage, Engine secondStage, Engine thirdStage) {
+//        this.firstStage = firstStage;
+//        this.secondStage = secondStage;
+//        this.thirdStage = thirdStage;
+//    }
+
+        public Rocket(double fuelStageOne, double fuelStageTwo, double fuelStageThree) {
         this.firstStage = new Engine(fuelStageOne);
         this.secondStage = new Engine(fuelStageTwo);
+        this.thirdStage = new Engine(fuelStageThree);
     }
 
     /**
