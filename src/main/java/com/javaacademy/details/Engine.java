@@ -1,5 +1,9 @@
 package com.javaacademy.details;
 
+import com.javaacademy.exceptions.LimitFuelException;
+import com.javaacademy.exceptions.NotEnoughFuelException;
+import lombok.SneakyThrows;
+
 /**
  * Двигатель космического корабля
  */
@@ -11,22 +15,31 @@ public class Engine {
     //Текущее количество топлива в двигателе
     private double currentFuel;
 
-    public Engine(double currentFuel) {
+    public Engine(double currentFuel) throws LimitFuelException {
         this.currentFuel = currentFuel;
+        if (currentFuel > MAX_FUEL) {
+            throw new LimitFuelException("Количество топлива при создании двигателя больше лимита");
+        }
     }
 
     /**
      * Запуск двигателя
      */
+    @SneakyThrows
     public void start() {
+        if (currentFuel < MINIMUM_FUEL_FOR_START) {
+            throw new NotEnoughFuelException("Количество топлива недостаточно для старта двигателя");
+        }
         currentFuel = 0;
     }
-
 
     /**
      * Дозаправка
      */
-    public void refuel(double currentFuel) {
+    public void refuel(double currentFuel) throws LimitFuelException {
+        if ((this.currentFuel + currentFuel) > MAX_FUEL) {
+            throw new LimitFuelException("Количество топлива после дозаправки двигателя больше лимита");
+        }
         this.currentFuel += currentFuel;
     }
 }

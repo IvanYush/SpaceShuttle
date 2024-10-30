@@ -5,12 +5,13 @@ import com.javaacademy.details.LifeCycleItems.OxygenBalloon;
 import com.javaacademy.details.LifeCycleItems.Water;
 import com.javaacademy.details.Rocket;
 import com.javaacademy.details.Capsule;
+import com.javaacademy.exceptions.LimitFuelException;
 
 /**
  * Космодром "Байконур"
  */
 public class SpaceShuttleLauncher {
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) throws InterruptedException, LimitFuelException {
         SpaceShuttleLauncher launcher = new SpaceShuttleLauncher();
         SpaceShuttle shuttle = launcher.createShuttle();
         launcher.startFly(shuttle);
@@ -28,7 +29,7 @@ public class SpaceShuttleLauncher {
         System.out.println("* На заднем фоне играет Эдуард Артемьев - Поход (https://www.youtube.com/watch?v=xVNy38B0Eqg) *");
     }
 
-    public SpaceShuttle createShuttle() {
+    public SpaceShuttle createShuttle() throws LimitFuelException {
         Rocket rocket = new Rocket(300_000, 70_000, 100_000);
 
         Water water = new Water();
