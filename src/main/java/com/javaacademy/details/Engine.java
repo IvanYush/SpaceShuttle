@@ -2,11 +2,12 @@ package com.javaacademy.details;
 
 import com.javaacademy.exceptions.LimitFuelException;
 import com.javaacademy.exceptions.NotEnoughFuelException;
-import lombok.SneakyThrows;
+import lombok.ToString;
 
 /**
  * Двигатель космического корабля
  */
+@ToString
 public class Engine {
     //Минимальное количество топливо для старта
     private static final double MINIMUM_FUEL_FOR_START = 60_000;
@@ -25,8 +26,7 @@ public class Engine {
     /**
      * Запуск двигателя
      */
-    @SneakyThrows
-    public void start() {
+    public void start() throws NotEnoughFuelException {
         if (currentFuel < MINIMUM_FUEL_FOR_START) {
             throw new NotEnoughFuelException("Количество топлива недостаточно для старта двигателя");
         }

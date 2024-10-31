@@ -1,10 +1,12 @@
 package com.javaacademy.details;
 
 import com.javaacademy.exceptions.LimitFuelException;
+import lombok.ToString;
 
 /**
  * Ракета носитель
  */
+@ToString
 public class Rocket {
     //Двигатель первой стадии
     private Engine firstStage;
@@ -13,10 +15,10 @@ public class Rocket {
     //Двигатель третьей стадии
     private Engine thirdStage;
 
-        public Rocket(double fuelStageOne, double fuelStageTwo, double fuelStageThree) throws LimitFuelException {
-        this.firstStage = new Engine(fuelStageOne);
-        this.secondStage = new Engine(fuelStageTwo);
-        this.thirdStage = new Engine(fuelStageThree);
+    public Rocket(Engine firstStage, Engine secondStage, Engine thirdStage) {
+        this.firstStage = firstStage;
+        this.secondStage = secondStage;
+        this.thirdStage = thirdStage;
     }
 
     /**

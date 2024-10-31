@@ -1,5 +1,6 @@
 package com.javaacademy;
 
+import com.javaacademy.details.Engine;
 import com.javaacademy.details.LifeCycleItems.JamTube;
 import com.javaacademy.details.LifeCycleItems.OxygenBalloon;
 import com.javaacademy.details.LifeCycleItems.Water;
@@ -30,7 +31,10 @@ public class SpaceShuttleLauncher {
     }
 
     public SpaceShuttle createShuttle() throws LimitFuelException {
-        Rocket rocket = new Rocket(300_000, 70_000, 100_000);
+        Engine firstStage = new Engine(300_000);
+        Engine secondStage = new Engine(70_000);
+        Engine thirdStage = new Engine(100_000);
+        Rocket rocket = new Rocket(firstStage, secondStage, thirdStage);
 
         Water water = new Water();
         JamTube jamTube = new JamTube();
